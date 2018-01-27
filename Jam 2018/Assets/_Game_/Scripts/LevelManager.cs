@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-
     public float timeEvent; //il tempo di durata di un evento
     public int numEventsPerLevel; //numero di eventi per livello
     public int lives;
@@ -18,6 +17,12 @@ public class LevelManager : MonoBehaviour
     private bool animationMoment; //il momento dell'animazione è attivo?
     private bool correct; //la risposta è corretta?
     private int contEvents; //quanti eventi sono passati dall'inizio del livello
+    private bool captainSetted; //il capitano è stato deciso?
+    private int captainNumber;
+    private bool match;
+    private List<OrderEnum> sequence1;
+    List<OrderEnum> sequence2;
+    private bool finalizeEvent;
     //public float timeAnimation; //il tempo di durata dell'animazione
 
     void Start()
@@ -26,6 +31,14 @@ public class LevelManager : MonoBehaviour
         correct = false;
         contEvents = 0;
         level = 1;
+        captainSetted = false;
+        captainNumber = 1;
+        match = false;
+        sequence1 = new List<OrderEnum>();
+        sequence2 = new List<OrderEnum>();
+        eventMoment = true;
+        timerStart = Time.time;
+        finalizeEvent = false;
     }
 
     void Update()
@@ -33,57 +46,34 @@ public class LevelManager : MonoBehaviour
         //Inizializza il gioco
         if (Time.time >= timerStart + startDelay)
         {
-
-
             //alla fine riattiva l'evento
-            timerStart = Time.time;
-            eventMoment = true;
+
         }
-        
+
         //Inizio evento
         if (Time.time >= timerStart + timeEvent && eventMoment)
         {
-            int nCaptains = level;
-            if (nCaptains>4)
+            if (!captainSetted)
             {
-                nCaptains = 4;
+                setCaptain();
             }
-            int captainNumber = (int)((Random.value * nCaptains) +1);
-            if (captainNumber == 2)
-            {
-                timeEvent = timeEvent * reduceTime;
-            }
-            
 
-            //Agisci e setta il *correct
-            List<OrderEnum> sequence1 = GetComponent <Capitano>().createSequence(level);
-            List<OrderEnum> sequence2 = GameObject.FindObjectOfType<StackOrder>().GetOrders();
-            bool correct = true;
-            for (int i = 0; i <= sequence1.Count; i++)
-            {
-                if (sequence1[i] != sequence2[i])
-                {
-                    correct = false;
-                }
-            }
-            
-            // TODO Fai la chiamata all'animazione
+            // TODO : DEVI SETTARE IL MATCH A TRUE
 
+            if (match)
+            {//Agisci e setta il *correct
+                setMatch();
+            }
+            // TODO : Fai la chiamata all'animazione
         }
         else if (eventMoment)
         {
-            //Aggiorna il contatore di eventi
-            contEvents++;
-            //Verifica il passaggio di livello
-            if (contEvents >= numEventsPerLevel)
-            {
-                level++;
-                //aggiungi una persona al pool
-                contEvents = 0;
-            }
-            animationMoment = true;
             eventMoment = false;
-            timeEvent = timeEvent / reduceTime;
+            finalizeEvent = true;
+        }
+        if (finalizeEvent)
+        {
+            endEvent();
         }
 
         //Inizio animazione
@@ -100,8 +90,75 @@ public class LevelManager : MonoBehaviour
             eventMoment = true;
             animationMoment = false;
         }
-
-
-
     }
+
+    public void setCaptain()
+    {
+        int nCaptains = level;
+        if (nCaptains > 4)
+        {
+            nCaptains = 4;
+        }
+        captainNumber = (int)((Random.value * nCaptains) + 1);
+        if (captainNumber == 2)
+        {
+            timeEvent = timeEvent * reduceTime;
+        }
+        sequence1 = GetComponent<Capitano>().createSequence(level);
+
+        List<OrderEnum> sequence3 = new List<OrderEnum>(sequence1);
+
+        // TODO : INVIARE SCRITTA
+
+        captainSetted = true;
+    }
+
+    public void setMatch()
+    {
+        sequence2 = GameObject.FindObjectOfType<StackOrder>().GetOrders();
+        bool correct = true;
+        for (int i = 0; i < sequence1.Count; i++)
+        {
+            switch (captainNumber)
+            {
+                case 3:
+                    if (sequence1[i] == sequence2[i])
+                        correct = false;
+                    break;
+                case 4:
+                    if (sequence2.Count > 0)
+                        correct = false;
+                    break;
+                default:
+                    if (sequence1[i] != sequence2[i])
+                        correct = false;
+                    break;
+            }
+        }
+        eventMoment = false;
+        finalizeEvent = true;
+    }
+
+    public void endEvent()
+    {
+        //Aggiorna il contatore di eventi
+        contEvents++;
+        //Verifica il passaggio di livello
+        if (contEvents >= numEventsPerLevel)
+        {
+            level++;
+            //aggiungi una persona al pool
+            contEvents = 0;
+        }
+        animationMoment = true;
+        captainSetted = false;
+        match = false;
+        finalizeEvent = false;
+        timeEvent = timeEvent / reduceTime;
+    }
+
+
+
+
+
 }
