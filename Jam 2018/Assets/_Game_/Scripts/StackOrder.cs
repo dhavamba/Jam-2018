@@ -32,6 +32,7 @@ public class StackOrder : MonoBehaviour
         numberOrder++;
         if (numberOrder > GameObject.FindObjectOfType<LevelManager>().getLevel())
         {
+            GameObject.FindObjectOfType<Movement>().SetActivate(false);
             CreateMine();
             numberOrder = 0;
         }
