@@ -100,6 +100,7 @@ public class LevelManager : MonoBehaviour
         GameObject.FindObjectOfType<Movement>().SetActivate(true);
         List<OrderEnum> sequence3 = new List<OrderEnum>(sequenceCaptain);
         Debug.Log(timeEvent);
+        GameObject.FindObjectOfType<SignCreate>().Add(sequenceCaptain);
         GameObject.FindObjectOfType<Bar>().SetTime(timeEvent);
 
         // TODO : INVIARE SCRITTA
