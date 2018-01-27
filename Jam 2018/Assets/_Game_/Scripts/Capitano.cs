@@ -27,13 +27,23 @@ public class Capitano : MonoBehaviour
         return type;
     }
 
-    public int[] createSequence(int size)
+    public OrderEnum[] createSequence(int size)
     {
         //0 è sinistra, 1 è destra
-        int[] sequence = new int[size];
+        OrderEnum[] sequence = new OrderEnum[size];
+        int num = 0;
         for (int i=0; i<size; i++)
         {
-            sequence[i] = (int)(Random.value * 2);
+            num = (int)(Random.value * 2);
+            if (num==0)
+            {
+                sequence[i] = OrderEnum.Left;
+            }
+            else
+            {
+                sequence[i] = OrderEnum.Right;
+            }
+            
         }
         return sequence;
     }

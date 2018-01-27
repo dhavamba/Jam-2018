@@ -42,7 +42,7 @@ public class LevelManager : MonoBehaviour
         if (Time.time >= timerStart + timeEvent && eventMoment)
         {
             //Agisci e setta il *correct
-
+            OrderEnum[] sequence = GetComponent <Capitano>().createSequence(level);
 
             
 
