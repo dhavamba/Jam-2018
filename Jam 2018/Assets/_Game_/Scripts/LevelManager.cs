@@ -165,6 +165,10 @@ public class LevelManager : MonoBehaviour
         timeEvent = timeEvent / reduceTime;
     }
 
+    public int getLevel()
+    {
+        return level;
+    }
 
 
 
