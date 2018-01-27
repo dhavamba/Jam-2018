@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private float duration;
 
+    private bool activate;
+
     private StackOrder stack;
 
     private void Awake()
@@ -26,14 +28,19 @@ public class Movement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (GetLeft())
+        if (GetLeft() && activate)
         {
             stack.Add(OrderEnum.Left);
         }
-        if (GetRight())
+        if (GetRight() && activate)
         {
             stack.Add(OrderEnum.Right);
         }
+    }
+
+    public void SetActivate(bool b)
+    {
+        activate = b;
     }
 
     public void Left(float orderDuration)
