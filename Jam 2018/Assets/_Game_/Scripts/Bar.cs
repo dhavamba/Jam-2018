@@ -4,7 +4,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(RectTransform))]
 public class Bar : MonoBehaviour
 {
-    protected RectTransform rect;
+    private RectTransform rect;
     private float maxSixe;
 
     private float time;
