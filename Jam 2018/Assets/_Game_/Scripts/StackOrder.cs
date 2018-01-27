@@ -13,6 +13,11 @@ public class StackOrder : MonoBehaviour
         movement = GameObject.FindObjectOfType<Movement>();
     }
 
+    public List<OrderEnum> GetOrders()
+    {
+        return orders;
+    }
+
     public void Add(OrderEnum order)
     {
         orders.Add(order);
