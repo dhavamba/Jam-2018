@@ -41,20 +41,20 @@ public class StackOrder : MonoBehaviour
     private void CreateMine()
     {
         mineParent = GameObject.Instantiate(wallMine, movement.transform.GetChild(0).position, Quaternion.identity, movement.transform.GetChild(0)).transform;
-        Vector2 aux = mineParent.position;
+        int numberMine = 7;
         foreach (OrderEnum o in orders)
         {
             switch (o)
             {
                 case OrderEnum.Left:
-                    aux -= Vector2.right * (mine.GetComponent<SpriteRenderer>().bounds.size.x + 0.2f);
+                    numberMine--;
                     break;
                 case OrderEnum.Right:
-                    aux += Vector2.right * (mine.GetComponent<SpriteRenderer>().bounds.size.x);
+                    numberMine++;
                     break;
             }
         }
-        Physics2D.OverlapPoint(aux).gameObject.SetActive(false);
+        mineParent.GetChild(numberMine).gameObject.SetActive(false);
     }
 
     public List<OrderEnum> Play()
