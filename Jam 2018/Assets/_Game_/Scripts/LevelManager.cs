@@ -48,7 +48,7 @@ public class LevelManager : MonoBehaviour
             //alla fine riattiva l'evento
 
         }
-        //Debug.Log("WEEE");
+        
         //Inizio evento
         if (Time.time <= timerStart + timeEvent && eventMoment)
         {
@@ -57,11 +57,6 @@ public class LevelManager : MonoBehaviour
             {
                 setCaptain();
             }
-
-            // TODO : DEVI SETTARE IL MATCH A TRUE
-
-            
-            // TODO : Fai la chiamata all'animazione
         }
         else if (eventMoment)
         {
@@ -78,11 +73,12 @@ public class LevelManager : MonoBehaviour
         {
             //TODO: Fai l'animazione
 
-
+            //TODO: alla fine riattiva l'evento
+            animationMoment = false;
         }
         else if (!eventMoment)
         {
-            //alla fine riattiva l'evento
+            
             timerStart = Time.time;
             eventMoment = true;
             animationMoment = false;
@@ -113,7 +109,7 @@ public class LevelManager : MonoBehaviour
 
     public void setMatch()
     {
-        sequencePlayer = GameObject.FindObjectOfType<StackOrder>().GetOrders();
+        sequencePlayer = GameObject.FindObjectOfType<StackOrder>().Play();
         //Debug.Log("SEQUENCE_PLAYER:" + sequencePlayer[0]);
         bool correct = true;
         //Debug.Log("lunghezza player: " + sequencePlayer.Count);
@@ -141,7 +137,7 @@ public class LevelManager : MonoBehaviour
             correct = false;
         }
         
-        //Debug.Log(correct);
+        Debug.Log(correct);
         eventMoment = false;
         finalizeEvent = true;
     }

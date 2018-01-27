@@ -51,7 +51,7 @@ public class StackOrder : MonoBehaviour
         Physics2D.OverlapPoint(aux).gameObject.SetActive(false);
     }
 
-    public void Play()
+    public List<OrderEnum> Play()
     {
         foreach (OrderEnum order in orders)
         {
@@ -65,7 +65,8 @@ public class StackOrder : MonoBehaviour
                     break;
             }
         }
-        orders.Clear();
+        return orders;
+        orders = new List<OrderEnum>();
     }
 
     public void Play(float time)
