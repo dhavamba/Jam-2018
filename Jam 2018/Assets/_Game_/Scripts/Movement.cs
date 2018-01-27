@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +7,14 @@ public class Movement : MonoBehaviour
 {
     [SerializeField]
     private float unit;
+    [SerializeField]
+    private float duration;
+
+    private StackOrder stack;
 
     private void Awake()
     {
-        
+        stack = GameObject.FindObjectOfType<StackOrder>();
     }
 
     // Use this for initialization
@@ -23,14 +28,38 @@ public class Movement : MonoBehaviour
     {
         if (GetLeft())
         {
-            transform.Translate(Vector2.left * unit);
+            stack.Add(OrderEnum.Left);
         }
         if (GetRight())
         {
-            transform.Translate(Vector2.right * unit);
+            stack.Add(OrderEnum.Right);
         }
     }
 
+    public void Left(float orderDuration)
+    {
+        transform.DOMove(Translate(Vector3.left * unit), orderDuration);
+    }
+
+    public void Left()
+    {
+        transform.DOMove(Translate(Vector3.left * unit), duration);
+    }
+
+    public void Right(float orderDuration)
+    {
+        transform.DOMove(Translate(Vector3.right * unit), orderDuration);
+    }
+
+    public void Right()
+    {
+        transform.DOMove(Translate(Vector3.right * unit), duration);
+    }
+
+    private Vector3 Translate(Vector3 translate)
+    {
+        return transform.position + translate;
+    }
 
     private bool GetLeft()
     {

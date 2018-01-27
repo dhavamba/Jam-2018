@@ -20,10 +20,17 @@ GameObject:
   m_Component:
   - component: {fileID: 4190678043975192}
   - component: {fileID: 114595873423777698}
+<<<<<<< HEAD
   - component: {fileID: 114846952675967266}
   - component: {fileID: 114409689680554040}
   - component: {fileID: 114230051091563620}
   - component: {fileID: 114827526211617038}
+=======
+  - component: {fileID: 114813808635119070}
+  - component: {fileID: 114207420513571274}
+  - component: {fileID: 114468913449235118}
+  - component: {fileID: 114103054275571778}
+>>>>>>> dd6faec89983e4a839073d45c686064de5cc0c3e
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,6 +51,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!114 &114230051091563620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -59,6 +67,9 @@ MonoBehaviour:
   numEventsPerLevel: 0
   lives: 0
 --- !u!114 &114409689680554040
+=======
+--- !u!114 &114103054275571778
+>>>>>>> dd6faec89983e4a839073d45c686064de5cc0c3e
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -66,9 +77,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1466703161857754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70900b3b60934084bb1f08fd69aa6c36, type: 3}
+  m_Script: {fileID: 11500000, guid: d01fbf7a9969f234c830667f8b0f276d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 --- !u!114 &114595873423777698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,6 +104,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114846952675967266
+=======
+--- !u!114 &114207420513571274
+>>>>>>> dd6faec89983e4a839073d45c686064de5cc0c3e
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -212,7 +227,10 @@ MonoBehaviour:
       _startPlaying: 1
       _defaultJoystickMaps: []
       _defaultMouseMaps: []
-      _defaultKeyboardMaps: []
+      _defaultKeyboardMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 0
       _defaultCustomControllerMaps: []
       _startingCustomControllers: []
       _assignMouseOnStart: 1
@@ -235,7 +253,7 @@ MonoBehaviour:
       _excludeFromControllerAutoAssignment: 0
     actions:
     - _id: 0
-      _name: right
+      _name: left
       _type: 1
       _descriptiveName: Action0
       _positiveDescriptiveName: 
@@ -244,27 +262,9 @@ MonoBehaviour:
       _userAssignable: 1
       _categoryId: 0
     - _id: 1
-      _name: left
+      _name: right
       _type: 1
       _descriptiveName: Action1
-      _positiveDescriptiveName: 
-      _negativeDescriptiveName: 
-      _behaviorId: 0
-      _userAssignable: 1
-      _categoryId: 0
-    - _id: 2
-      _name: down
-      _type: 1
-      _descriptiveName: Action2
-      _positiveDescriptiveName: 
-      _negativeDescriptiveName: 
-      _behaviorId: 0
-      _userAssignable: 1
-      _categoryId: 0
-    - _id: 3
-      _name: up
-      _type: 1
-      _descriptiveName: Action0
       _positiveDescriptiveName: 
       _negativeDescriptiveName: 
       _behaviorId: 0
@@ -279,7 +279,7 @@ MonoBehaviour:
     actionCategoryMap:
       list:
       - categoryId: 0
-        actionIds: 00000000010000000200000003000000
+        actionIds: 0000000001000000
     inputBehaviors:
     - _id: 0
       _name: Default
@@ -338,7 +338,7 @@ MonoBehaviour:
       customControllerUid: 0
       actionElementMaps:
       - _actionCategoryId: 0
-        _actionId: 1
+        _actionId: 0
         _elementType: 1
         _elementIdentifierId: -1
         _axisRange: 0
@@ -349,18 +349,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 2
-        _elementType: 1
-        _elementIdentifierId: -1
-        _axisRange: 0
-        _invert: 0
-        _axisContribution: 0
-        _keyboardKeyCode: 115
-        _modifierKey1: 0
-        _modifierKey2: 0
-        _modifierKey3: 0
-      - _actionCategoryId: 0
-        _actionId: 0
+        _actionId: 1
         _elementType: 1
         _elementIdentifierId: -1
         _axisRange: 0
@@ -370,22 +359,11 @@ MonoBehaviour:
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
-      - _actionCategoryId: 0
-        _actionId: 3
-        _elementType: 1
-        _elementIdentifierId: -1
-        _axisRange: 0
-        _invert: 0
-        _axisContribution: 0
-        _keyboardKeyCode: 119
-        _modifierKey1: 0
-        _modifierKey2: 0
-        _modifierKey3: 0
     mouseMaps: []
     customControllerMaps: []
     customControllers: []
     playerIdCounter: 2
-    actionIdCounter: 4
+    actionIdCounter: 2
     actionCategoryIdCounter: 1
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 1
@@ -400,3 +378,39 @@ MonoBehaviour:
     customControllerIdCounter: 0
   _controllerDataFiles: {fileID: 11400000, guid: d21d2b20df8369642b76aafbb2576ba7,
     type: 2}
+--- !u!114 &114468913449235118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1466703161857754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c2994afafa20334ea7488c12cc0d236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeEvent: 0
+  level: 0
+  startDelay: 0
+--- !u!114 &114595873423777698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1466703161857754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16ce07724fd643c582fc68f916bd210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114813808635119070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1466703161857754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93968d323ace4844cb4f6c19b61b8986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
