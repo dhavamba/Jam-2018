@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class SignCreate : MonoBehaviour
 {
-    private Sprite right;
-    private Sprite left;
+    public Sprite right;
+    public Sprite left;
 
     public void Add(params OrderEnum[] orders)
     {
