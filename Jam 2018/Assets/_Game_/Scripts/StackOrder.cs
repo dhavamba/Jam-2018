@@ -61,6 +61,7 @@ public class StackOrder : MonoBehaviour
     {
         foreach (OrderEnum order in orders)
         {
+            //Debug.Log("WEEE");
             switch (order)
             {
                 case OrderEnum.Left:
