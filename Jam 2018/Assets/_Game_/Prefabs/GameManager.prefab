@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 114782339667667988}
   - component: {fileID: 114232021775088864}
   - component: {fileID: 114241406750957422}
+  - component: {fileID: 114635851743043060}
+  - component: {fileID: 114856940639096858}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -328,6 +330,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mine: {fileID: 1773319966893158, guid: 5550e8cf24382394bb42731b8d723bd9, type: 2}
   wallMine: {fileID: 1045030236961000, guid: 06cafd2f1c454824e865d826693b040c, type: 2}
+--- !u!114 &114635851743043060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1468644964989466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7445e71909de3b4a9fe875261a70cb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeEvent: 0
+  numEventsPerLevel: 0
+  lives: 0
+  reduceTime: 0
 --- !u!114 &114782339667667988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -337,6 +354,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93968d323ace4844cb4f6c19b61b8986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114856940639096858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1468644964989466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a769e1a44b81847bc1f3c9f3efcfc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114922911546870774
