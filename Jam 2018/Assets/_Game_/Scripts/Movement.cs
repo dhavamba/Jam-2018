@@ -10,9 +10,11 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private float duration;
 
+    private StackOrder stack;
+
     private void Awake()
     {
-        
+        stack = GameObject.FindObjectOfType<StackOrder>();
     }
 
     // Use this for initialization
@@ -26,19 +28,28 @@ public class Movement : MonoBehaviour
     {
         if (GetLeft())
         {
-            transform.DOMove(Translate(Vector3.left * unit), duration);
+            stack.Add(OrderEnum.Left);
         }
         if (GetRight())
         {
-            transform.DOMove(Translate(Vector3.right * unit), duration);
+            stack.Add(OrderEnum.Right);
         }
+    }
+
+    public void Left()
+    {
+        transform.DOMove(Translate(Vector3.left * unit), duration);
+    }
+
+    public void Right()
+    {
+        transform.DOMove(Translate(Vector3.right * unit), duration);
     }
 
     private Vector3 Translate(Vector3 translate)
     {
         return transform.position + translate;
     }
-
 
     private bool GetLeft()
     {
