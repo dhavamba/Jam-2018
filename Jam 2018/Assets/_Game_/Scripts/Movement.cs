@@ -7,8 +7,8 @@ public class Movement : MonoBehaviour
 {
     [SerializeField]
     private float unit;
-    [SerializeField]
-    private float duration;
+
+    public float duration;
 
     private bool activate;
 

@@ -59,6 +59,14 @@ public class StackOrder : MonoBehaviour
 
     public List<OrderEnum> Play()
     {
+        StartCoroutine(MyCoroutine());
+        List<OrderEnum> tmp = new List<OrderEnum>(orders);
+        orders = new List<OrderEnum>();
+        return tmp;
+    }
+
+    IEnumerator MyCoroutine()
+    {
         foreach (OrderEnum order in orders)
         {
             //Debug.Log("WEEE");
@@ -71,11 +79,12 @@ public class StackOrder : MonoBehaviour
                     movement.Right();
                     break;
             }
+            yield return new WaitForSeconds(movement.duration);
         }
-        List<OrderEnum> tmp = new List<OrderEnum>(orders);
-        orders = new List<OrderEnum>();
-        return tmp;
     }
+
+
+
 
     public List<OrderEnum> Play(float time)
     {
