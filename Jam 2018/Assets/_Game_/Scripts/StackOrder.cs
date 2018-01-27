@@ -7,10 +7,18 @@ public class StackOrder : MonoBehaviour
     private List<OrderEnum> orders;
     private Movement movement;
 
+    [SerializeField]
+    private GameObject mine;
+    [SerializeField]
+    private GameObject wallMine;
+
+    private Transform mineParent;
+
     private void Awake()
     {
         orders = new List<OrderEnum>();
         movement = GameObject.FindObjectOfType<Movement>();
+        //Add(OrderEnum.Right);
     }
 
     public List<OrderEnum> GetOrders()
@@ -18,9 +26,29 @@ public class StackOrder : MonoBehaviour
         return orders;
     }
 
-    public void Add(OrderEnum order)
+    public void Add(params OrderEnum[] order)
     {
-        orders.Add(order);
+        orders.AddRange(order);
+        CreateMine();
+    }
+
+    private void CreateMine()
+    {
+        mineParent = GameObject.Instantiate(wallMine, movement.transform.GetChild(0).position, Quaternion.identity, movement.transform.GetChild(0)).transform;
+        Vector2 aux = mineParent.position;
+        foreach (OrderEnum o in orders)
+        {
+            switch (o)
+            {
+                case OrderEnum.Left:
+                    aux -= Vector2.right * (mine.GetComponent<SpriteRenderer>().bounds.size.x + 0.2f);
+                    break;
+                case OrderEnum.Right:
+                    aux += Vector2.right * (mine.GetComponent<SpriteRenderer>().bounds.size.x);
+                    break;
+            }
+        }
+        Physics2D.OverlapPoint(aux).gameObject.SetActive(false);
     }
 
     public void Play()

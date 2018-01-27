@@ -5,5 +5,6 @@ using UnityEngine;
 public enum OrderEnum
 {
     Left,
-    Right
+    Right,
+    Up
 }
