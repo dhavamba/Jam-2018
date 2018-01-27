@@ -34,4 +34,23 @@ public class StackOrder : MonoBehaviour
         }
         orders.Clear();
     }
+
+    public void Play(float time)
+    {
+        float orderDuration = time / orders.Count;
+
+        foreach (OrderEnum order in orders)
+        {
+            switch (order)
+            {
+                case OrderEnum.Left:
+                    movement.Left(orderDuration);
+                    break;
+                case OrderEnum.Right:
+                    movement.Right(orderDuration);
+                    break;
+            }
+        }
+        orders.Clear();
+    }
 }

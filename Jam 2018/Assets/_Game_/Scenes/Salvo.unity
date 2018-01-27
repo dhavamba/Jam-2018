@@ -235,16 +235,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114207420513571274, guid: 49776492b3714034188e54c9fdb14e27,
-        type: 2}
-      propertyPath: _userData.players.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114207420513571274, guid: 49776492b3714034188e54c9fdb14e27,
-        type: 2}
-      propertyPath: _userData.players.Array.data[1]._defaultKeyboardMaps.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4190678043975192, guid: 49776492b3714034188e54c9fdb14e27, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.5799999
@@ -277,46 +267,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114207420513571274, guid: 49776492b3714034188e54c9fdb14e27,
-        type: 2}
-      propertyPath: _userData.players.Array.data[1]._id
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114207420513571274, guid: 49776492b3714034188e54c9fdb14e27,
-        type: 2}
-      propertyPath: _userData.players.Array.data[1]._name
-      value: player 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114207420513571274, guid: 49776492b3714034188e54c9fdb14e27,
-        type: 2}
-      propertyPath: _userData.players.Array.data[1]._descriptiveName
-      value: Player0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114207420513571274, guid: 49776492b3714034188e54c9fdb14e27,
-        type: 2}
-      propertyPath: _userData.players.Array.data[1]._startPlaying
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114207420513571274, guid: 49776492b3714034188e54c9fdb14e27,
-        type: 2}
-      propertyPath: _userData.players.Array.data[1]._assignMouseOnStart
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114207420513571274, guid: 49776492b3714034188e54c9fdb14e27,
-        type: 2}
-      propertyPath: _userData.players.Array.data[1]._assignKeyboardOnStart
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114207420513571274, guid: 49776492b3714034188e54c9fdb14e27,
-        type: 2}
-      propertyPath: _userData.playerIdCounter
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114207420513571274, guid: 49776492b3714034188e54c9fdb14e27,
-        type: 2}
-      propertyPath: _userData.players.Array.data[1]._defaultKeyboardMaps.Array.data[0]._enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49776492b3714034188e54c9fdb14e27, type: 2}
   m_IsPrefabParent: 0
@@ -332,11 +282,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114873667575762032, guid: f2eae6725f73a6148adca00bf9b58160,
-        type: 2}
-      propertyPath: CameraTargets.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4660280457147404, guid: f2eae6725f73a6148adca00bf9b58160, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -374,31 +319,6 @@ Prefab:
       propertyPath: CameraTargets.Array.data[0].TargetTransform
       value: 
       objectReference: {fileID: 520486024}
-    - target: {fileID: 114873667575762032, guid: f2eae6725f73a6148adca00bf9b58160,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114873667575762032, guid: f2eae6725f73a6148adca00bf9b58160,
-        type: 2}
-      propertyPath: OffsetY
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114873667575762032, guid: f2eae6725f73a6148adca00bf9b58160,
-        type: 2}
-      propertyPath: OffsetX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114873667575762032, guid: f2eae6725f73a6148adca00bf9b58160,
-        type: 2}
-      propertyPath: CameraTargets.Array.data[0].TargetInfluenceH
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114873667575762032, guid: f2eae6725f73a6148adca00bf9b58160,
-        type: 2}
-      propertyPath: CameraTargets.Array.data[0].TargetInfluenceV
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2eae6725f73a6148adca00bf9b58160, type: 2}
   m_IsPrefabParent: 0

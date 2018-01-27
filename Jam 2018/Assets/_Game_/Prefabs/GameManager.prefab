@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114813808635119070}
   - component: {fileID: 114207420513571274}
   - component: {fileID: 114468913449235118}
+  - component: {fileID: 114103054275571778}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -43,6 +44,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114103054275571778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1466703161857754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d01fbf7a9969f234c830667f8b0f276d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114207420513571274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,6 +185,21 @@ MonoBehaviour:
       _assignMouseOnStart: 1
       _assignKeyboardOnStart: 1
       _excludeFromControllerAutoAssignment: 1
+    - _id: 1
+      _name: player 1
+      _descriptiveName: Player0
+      _startPlaying: 1
+      _defaultJoystickMaps: []
+      _defaultMouseMaps: []
+      _defaultKeyboardMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 0
+      _defaultCustomControllerMaps: []
+      _startingCustomControllers: []
+      _assignMouseOnStart: 1
+      _assignKeyboardOnStart: 1
+      _excludeFromControllerAutoAssignment: 0
     actions:
     - _id: 0
       _name: left
@@ -284,7 +311,7 @@ MonoBehaviour:
     mouseMaps: []
     customControllerMaps: []
     customControllers: []
-    playerIdCounter: 1
+    playerIdCounter: 2
     actionIdCounter: 2
     actionCategoryIdCounter: 1
     inputBehaviorIdCounter: 1

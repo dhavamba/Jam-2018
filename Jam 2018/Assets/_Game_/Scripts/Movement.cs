@@ -36,9 +36,19 @@ public class Movement : MonoBehaviour
         }
     }
 
+    public void Left(float orderDuration)
+    {
+        transform.DOMove(Translate(Vector3.left * unit), orderDuration);
+    }
+
     public void Left()
     {
         transform.DOMove(Translate(Vector3.left * unit), duration);
+    }
+
+    public void Right(float orderDuration)
+    {
+        transform.DOMove(Translate(Vector3.right * unit), orderDuration);
     }
 
     public void Right()
