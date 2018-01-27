@@ -92,12 +92,15 @@ public class LevelManager : MonoBehaviour
         captainNumber = (int)((Random.value * nCaptains) + 1);
         if (captainNumber == 2)
         {
+            
             timeEvent = timeEvent * reduceTime;
         }
         
         sequenceCaptain = GetComponent<Capitano>().createSequence(level);
         GameObject.FindObjectOfType<Movement>().SetActivate(true);
         List<OrderEnum> sequence3 = new List<OrderEnum>(sequenceCaptain);
+        Debug.Log(timeEvent);
+        GameObject.FindObjectOfType<Bar>().SetTime(timeEvent);
 
         // TODO : INVIARE SCRITTA
 
@@ -160,7 +163,11 @@ public class LevelManager : MonoBehaviour
         captainSetted = false;
         match = false;
         finalizeEvent = false;
-        timeEvent = timeEvent / reduceTime;
+        if (captainNumber == 2)
+        {
+            timeEvent = timeEvent / reduceTime;
+        }
+
         timerStart = Time.time;
     }
 
