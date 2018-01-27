@@ -13,7 +13,7 @@ public class StackOrder : MonoBehaviour
     private GameObject wallMine;
 
     private Transform mineParent;
-    private int number;
+    private int numberOrder;
 
     private void Awake()
     {
@@ -29,11 +29,11 @@ public class StackOrder : MonoBehaviour
     public void Add(params OrderEnum[] order)
     {
         orders.AddRange(order);
-        number++;
-        if (number > GameObject.FindObjectOfType<LevelManager>().getLevel())
+        numberOrder++;
+        if (numberOrder > GameObject.FindObjectOfType<LevelManager>().getLevel())
         {
             CreateMine();
-            number = 0;
+            numberOrder = 0;
         }
     }
 
