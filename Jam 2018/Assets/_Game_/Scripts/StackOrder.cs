@@ -18,7 +18,7 @@ public class StackOrder : MonoBehaviour
     {
         orders = new List<OrderEnum>();
         movement = GameObject.FindObjectOfType<Movement>();
-        Add(OrderEnum.Right);
+        //Add(OrderEnum.Right);
     }
 
     public List<OrderEnum> GetOrders()

@@ -20,8 +20,8 @@ public class LevelManager : MonoBehaviour
     private bool captainSetted; //il capitano è stato deciso?
     private int captainNumber;
     private bool match;
-    private List<OrderEnum> sequence1;
-    List<OrderEnum> sequence2;
+    private List<OrderEnum> sequenceCaptain;
+    List<OrderEnum> sequencePlayer;
     private bool finalizeEvent;
     //public float timeAnimation; //il tempo di durata dell'animazione
 
@@ -34,10 +34,9 @@ public class LevelManager : MonoBehaviour
         captainSetted = false;
         captainNumber = 1;
         match = false;
-        sequence1 = new List<OrderEnum>();
-        sequence2 = new List<OrderEnum>();
+        sequenceCaptain = new List<OrderEnum>();
+        sequencePlayer = new List<OrderEnum>();
         eventMoment = true;
-        timerStart = Time.time;
         finalizeEvent = false;
     }
 
@@ -49,10 +48,11 @@ public class LevelManager : MonoBehaviour
             //alla fine riattiva l'evento
 
         }
-
+        //Debug.Log("WEEE");
         //Inizio evento
-        if (Time.time >= timerStart + timeEvent && eventMoment)
+        if (Time.time <= timerStart + timeEvent && eventMoment)
         {
+            
             if (!captainSetted)
             {
                 setCaptain();
@@ -60,10 +60,7 @@ public class LevelManager : MonoBehaviour
 
             // TODO : DEVI SETTARE IL MATCH A TRUE
 
-            if (match)
-            {//Agisci e setta il *correct
-                setMatch();
-            }
+            
             // TODO : Fai la chiamata all'animazione
         }
         else if (eventMoment)
@@ -104,9 +101,10 @@ public class LevelManager : MonoBehaviour
         {
             timeEvent = timeEvent * reduceTime;
         }
-        sequence1 = GetComponent<Capitano>().createSequence(level);
-
-        List<OrderEnum> sequence3 = new List<OrderEnum>(sequence1);
+        
+        sequenceCaptain = GetComponent<Capitano>().createSequence(level);
+        
+        List<OrderEnum> sequence3 = new List<OrderEnum>(sequenceCaptain);
 
         // TODO : INVIARE SCRITTA
 
@@ -115,32 +113,46 @@ public class LevelManager : MonoBehaviour
 
     public void setMatch()
     {
-        sequence2 = GameObject.FindObjectOfType<StackOrder>().GetOrders();
+        sequencePlayer = GameObject.FindObjectOfType<StackOrder>().GetOrders();
+        //Debug.Log("SEQUENCE_PLAYER:" + sequencePlayer[0]);
         bool correct = true;
-        for (int i = 0; i < sequence1.Count; i++)
+        //Debug.Log("lunghezza player: " + sequencePlayer.Count);
+        if (sequencePlayer.Count == sequenceCaptain.Count)
         {
-            switch (captainNumber)
+            
+            for (int i = 0; i < sequenceCaptain.Count; i++)
             {
-                case 3:
-                    if (sequence1[i] == sequence2[i])
-                        correct = false;
-                    break;
-                case 4:
-                    if (sequence2.Count > 0)
-                        correct = false;
-                    break;
-                default:
-                    if (sequence1[i] != sequence2[i])
-                        correct = false;
-                    break;
+                
+                switch (captainNumber)
+                {
+                    case 3:
+                        if (sequenceCaptain[i] == sequencePlayer[i])
+                            correct = false;
+                        break;
+                    default:
+                        if (sequenceCaptain[i] != sequencePlayer[i])
+                            correct = false;
+                        break;
+                }
             }
         }
+        else if ( ((captainNumber == 4) && (sequencePlayer.Count!=0)) || (!(captainNumber == 4)))
+        {
+            correct = false;
+        }
+        
+        //Debug.Log(correct);
         eventMoment = false;
         finalizeEvent = true;
     }
 
     public void endEvent()
     {
+        //if (match)
+        //{//Agisci e setta il *correct
+        setMatch();
+        //}
+
         //Aggiorna il contatore di eventi
         contEvents++;
         //Verifica il passaggio di livello
