@@ -13,12 +13,12 @@ public class StackOrder : MonoBehaviour
     private GameObject wallMine;
 
     private Transform mineParent;
+    private int numberOrder;
 
     private void Awake()
     {
         orders = new List<OrderEnum>();
         movement = GameObject.FindObjectOfType<Movement>();
-        //Add(OrderEnum.Right);
     }
 
     public List<OrderEnum> GetOrders()
@@ -29,26 +29,32 @@ public class StackOrder : MonoBehaviour
     public void Add(params OrderEnum[] order)
     {
         orders.AddRange(order);
-        CreateMine();
+        numberOrder++;
+        if (numberOrder > GameObject.FindObjectOfType<LevelManager>().getLevel())
+        {
+            GameObject.FindObjectOfType<Movement>().SetActivate(false);
+            CreateMine();
+            numberOrder = 0;
+        }
     }
 
     private void CreateMine()
     {
         mineParent = GameObject.Instantiate(wallMine, movement.transform.GetChild(0).position, Quaternion.identity, movement.transform.GetChild(0)).transform;
-        Vector2 aux = mineParent.position;
+        int numberMine = 7;
         foreach (OrderEnum o in orders)
         {
             switch (o)
             {
                 case OrderEnum.Left:
-                    aux -= Vector2.right * (mine.GetComponent<SpriteRenderer>().bounds.size.x + 0.2f);
+                    numberMine--;
                     break;
                 case OrderEnum.Right:
-                    aux += Vector2.right * (mine.GetComponent<SpriteRenderer>().bounds.size.x);
+                    numberMine++;
                     break;
             }
         }
-        Physics2D.OverlapPoint(aux).gameObject.SetActive(false);
+        mineParent.GetChild(numberMine).gameObject.SetActive(false);
     }
 
     public List<OrderEnum> Play()

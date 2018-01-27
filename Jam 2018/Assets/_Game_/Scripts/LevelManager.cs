@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public float timeEvent; //il tempo di durata di un evento
+    public float timeAnimation; //il tempo di durata dell'animazione
     public int numEventsPerLevel; //numero di eventi per livello
     public int lives;
     public float reduceTime;
@@ -52,7 +53,6 @@ public class LevelManager : MonoBehaviour
         //Inizio evento
         if (Time.time <= timerStart + timeEvent && eventMoment)
         {
-            
             if (!captainSetted)
             {
                 setCaptain();
@@ -69,12 +69,9 @@ public class LevelManager : MonoBehaviour
         }
 
         //Inizio animazione
-        if (animationMoment)
+        if (Time.time <= timerStart + timeAnimation && animationMoment)
         {
-            //TODO: Fai l'animazione
-
-            //TODO: alla fine riattiva l'evento
-            animationMoment = false;
+            
         }
         else if (!eventMoment)
         {
@@ -99,7 +96,7 @@ public class LevelManager : MonoBehaviour
         }
         
         sequenceCaptain = GetComponent<Capitano>().createSequence(level);
-        
+        GameObject.FindObjectOfType<Movement>().SetActivate(true);
         List<OrderEnum> sequence3 = new List<OrderEnum>(sequenceCaptain);
 
         // TODO : INVIARE SCRITTA
@@ -158,13 +155,19 @@ public class LevelManager : MonoBehaviour
             //aggiungi una persona al pool
             contEvents = 0;
         }
+        GameObject.FindObjectOfType<Movement>().SetActivate(false);
         animationMoment = true;
         captainSetted = false;
         match = false;
         finalizeEvent = false;
         timeEvent = timeEvent / reduceTime;
+        timerStart = Time.time;
     }
 
+    public int getLevel()
+    {
+        return level;
+    }
 
 
 

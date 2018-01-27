@@ -363,7 +363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7445e71909de3b4a9fe875261a70cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeEvent: 3
+  timeEvent: 5
+  timeAnimation: 3
   numEventsPerLevel: 5
   lives: 3
   reduceTime: 0.75
