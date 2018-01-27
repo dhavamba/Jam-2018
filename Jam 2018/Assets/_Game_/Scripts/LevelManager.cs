@@ -112,7 +112,7 @@ public class LevelManager : MonoBehaviour
         sequencePlayer = GameObject.FindObjectOfType<StackOrder>().Play();
         //Debug.Log("SEQUENCE_PLAYER:" + sequencePlayer[0]);
         bool correct = true;
-        //Debug.Log("lunghezza player: " + sequencePlayer.Count);
+        Debug.Log("lunghezza player: " + sequencePlayer.Count);
         if (sequencePlayer.Count == sequenceCaptain.Count)
         {
             

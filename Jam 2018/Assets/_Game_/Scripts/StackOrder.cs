@@ -65,11 +65,12 @@ public class StackOrder : MonoBehaviour
                     break;
             }
         }
-        return orders;
+        List<OrderEnum> tmp = new List<OrderEnum>(orders);
         orders = new List<OrderEnum>();
+        return tmp;
     }
 
-    public void Play(float time)
+    public List<OrderEnum> Play(float time)
     {
         float orderDuration = time / orders.Count;
 
@@ -85,6 +86,8 @@ public class StackOrder : MonoBehaviour
                     break;
             }
         }
-        orders.Clear();
+        List<OrderEnum> tmp = new List<OrderEnum>(orders);
+        orders = new List<OrderEnum>();
+        return tmp;
     }
 }
