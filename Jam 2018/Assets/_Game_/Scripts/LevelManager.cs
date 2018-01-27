@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour {
+public class LevelManager : MonoBehaviour
+{
 
     public float timeEvent; //il tempo di durata di un evento
     public int numEventsPerLevel; //numero di eventi per livello
