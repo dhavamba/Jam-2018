@@ -12,7 +12,7 @@ public class Velocity : MonoBehaviour
 	void Update ()
     {
         transform.Translate(Vector3.down * speed);
-        Invoke("Destroy", 10f);
+        Invoke("Destroy", 8f);
 	}
 
     void Destroy()

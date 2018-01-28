@@ -47,6 +47,6 @@ public class Bar : MonoBehaviour
 
     protected void SetBar(float actualValue)
     {
-        rect.sizeDelta = new Vector2(maxSixe * actualValue, rect.sizeDelta.y);
+        GetComponent<Image>().fillAmount = actualValue;
     }
 }
