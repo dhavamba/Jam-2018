@@ -364,12 +364,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7445e71909de3b4a9fe875261a70cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeEvent: 5
+  timeEvent: 4
   timeAnimation: 1
   timeAnimationFull: 3
   numEventsPerLevel: 1
   lives: 1
-  reduceTime: 0.75
+  reduceTime: 0.5
 --- !u!114 &114782339667667988
 MonoBehaviour:
   m_ObjectHideFlags: 1

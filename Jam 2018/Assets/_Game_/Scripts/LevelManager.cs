@@ -95,32 +95,26 @@ public class LevelManager : MonoBehaviour
         //captainNumber = 2;
         if (captainNumber == 2 || captainNumber == 4)
         {
-            
             timeEvent = timeEvent * reduceTime;
         }
-        Debug.Log("NUMERO CAPITANO: "+captainNumber);
+        //Debug.Log("NUMERO CAPITANO: "+captainNumber);
+        //Debug.Log("TEMPO: "+timeEvent);
         sequenceCaptain = GetComponent<Capitano>().createSequence(level);
         GameObject.FindObjectOfType<Movement>().SetActivate(true);
         GameObject.FindObjectOfType<SignCreate>().Add(sequenceCaptain);
+        GameObject.FindObjectOfType<SignCreate>().Enable(true, captainNumber-1);
         GameObject.FindObjectOfType<Bar>().SetTime(timeEvent);
 
         List<OrderEnum> sequenceTmp = new List<OrderEnum>(sequenceCaptain);
-        switch (captainNumber)
+        if (captainNumber == 3)
         {
-            case 3:
-                for (int i=0; i<sequenceTmp.Count; i++)
-                {
-                    if (OrderEnum.Left == 0)
-                        sequenceTmp[i] = OrderEnum.Right;
-                    else
-                        sequenceTmp[i] = OrderEnum.Left;
-                }
-                break;
-            case 4:
-
-            default:
-                //GameObject.FindObjectOfType<StackOrder>().SetOrders(sequenceTmp);
-                break;
+            for (int i = 0; i < sequenceTmp.Count; i++)
+            {
+                if (sequenceCaptain[i] == 0)
+                    sequenceTmp[i] = OrderEnum.Right;
+                else
+                    sequenceTmp[i] = OrderEnum.Left;
+            }
         }
         GameObject.FindObjectOfType<StackOrder>().SetOrders(sequenceTmp);
 
@@ -131,7 +125,7 @@ public class LevelManager : MonoBehaviour
     {
         sequencePlayer = GameObject.FindObjectOfType<StackOrder>().Play(timeAnimation);
         correct = true;
-        Debug.Log("lunghezza player: " + sequencePlayer.Count);
+        //Debug.Log("lunghezza player: " + sequencePlayer.Count);
         if (sequencePlayer.Count == sequenceCaptain.Count)
         {
             for (int i = 0; i < sequenceCaptain.Count; i++)
@@ -155,7 +149,7 @@ public class LevelManager : MonoBehaviour
             correct = false;
         }
         
-        Debug.Log(correct);
+        //Debug.Log(correct);
         eventMoment = false;
         finalizeEvent = true;
     }
@@ -163,7 +157,7 @@ public class LevelManager : MonoBehaviour
     public void endEvent()
     {
         setMatch();
-
+        GameObject.FindObjectOfType<SignCreate>().Enable(false, 0);
         //Aggiorna il contatore di eventi
         contEvents++;
         //Verifica il passaggio di livello

@@ -30,10 +30,10 @@ public class SignCreate : MonoBehaviour
         }
     }
 
-    public void Enable(bool t)
+    public void Enable(bool attiva, int captain)
     {
-        GetComponent<Image>().enabled = t;
-        GetComponent<Image>().sprite = pictures[0]; //ci pensi tu!!?!!?
+        GetComponent<Image>().enabled = attiva;
+        GetComponent<Image>().sprite = pictures[captain];
     }
 
     public void DisableSign()
