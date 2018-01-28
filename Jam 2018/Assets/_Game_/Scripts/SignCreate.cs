@@ -33,6 +33,17 @@ public class SignCreate : MonoBehaviour
     public void Enable(bool attiva, int captain)
     {
         GetComponent<Image>().enabled = attiva;
+        if (!attiva)
+        { 
+            foreach (Transform child in transform)
+            {
+            
+                child.GetComponent<Image>().enabled = attiva;
+            }
+        }
+        transform.parent.Find("Text Box").GetComponent<Image>().enabled = attiva;
+        transform.parent.Find("TimeUIContainer").GetComponent<Image>().enabled = attiva;
+        transform.parent.Find("TimeUI").GetComponent<Image>().enabled = attiva;
         GetComponent<Image>().sprite = pictures[captain];
     }
 

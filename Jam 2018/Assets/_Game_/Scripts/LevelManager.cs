@@ -10,6 +10,10 @@ public class LevelManager : MonoBehaviour
     public int numEventsPerLevel; //numero di eventi per livello
     public int lives;
     public float reduceTime;
+    public AudioClip owl;
+    public AudioClip dog;
+    public AudioClip parrot;
+    public AudioClip cat;
     //public float timeReduction; //il tempo di cui diminuisce l'evento
 
     private int level; //il livello attuale
@@ -104,6 +108,27 @@ public class LevelManager : MonoBehaviour
         GameObject.FindObjectOfType<SignCreate>().Add(sequenceCaptain);
         GameObject.FindObjectOfType<SignCreate>().Enable(true, captainNumber-1);
         GameObject.FindObjectOfType<Bar>().SetTime(timeEvent);
+        AudioClip tclip = owl;
+        switch (captainNumber)
+        {
+            case 1:
+                tclip = owl;
+                break;
+            case 2:
+                tclip = dog;
+                break;
+            case 3:
+                tclip = parrot;
+                break;
+            case 4:
+                tclip = cat;
+                break;
+            default:
+                tclip = owl;
+                break;
+        }
+        transform.Find("Captain_Sound").GetComponent<AudioSource>().clip = tclip;
+        transform.Find("Captain_Sound").GetComponent<AudioSource>().Play();
 
         List<OrderEnum> sequenceTmp = new List<OrderEnum>(sequenceCaptain);
         if (captainNumber == 3)
@@ -120,7 +145,7 @@ public class LevelManager : MonoBehaviour
 
         captainSetted = true;
     }
-
+    
     public void setMatch()
     {
         sequencePlayer = GameObject.FindObjectOfType<StackOrder>().Play(timeAnimation);
@@ -191,6 +216,12 @@ public class LevelManager : MonoBehaviour
     }
 
     public void GameOver()
+    {
+        GameObject.Find("submarine").active = false;
+        Invoke("_GameOver", 1f);
+    }
+
+    private void _GameOver()
     {
         GetComponent<AudioSource>().Play();
         GameObject.Find("UI").transform.FindChild("GameOverPanel").gameObject.active = true;
