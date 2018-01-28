@@ -100,12 +100,9 @@ public class LevelManager : MonoBehaviour
         sequenceCaptain = GetComponent<Capitano>().createSequence(level);
         GameObject.FindObjectOfType<Movement>().SetActivate(true);
         List<OrderEnum> sequence3 = new List<OrderEnum>(sequenceCaptain);
-        Debug.Log(timeEvent);
         GameObject.FindObjectOfType<SignCreate>().Add(sequenceCaptain);
         GameObject.FindObjectOfType<Bar>().SetTime(timeEvent);
         GameObject.FindObjectOfType<StackOrder>().SetOrders(sequenceCaptain);
-
-        // TODO : INVIARE SCRITTA
 
         captainSetted = true;
     }
@@ -146,10 +143,7 @@ public class LevelManager : MonoBehaviour
 
     public void endEvent()
     {
-        //if (match)
-        //{//Agisci e setta il *correct
         setMatch();
-        //}
 
         //Aggiorna il contatore di eventi
         contEvents++;
