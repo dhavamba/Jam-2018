@@ -8,6 +8,8 @@ public class StackOrder : MonoBehaviour
     private Movement movement;
 
     [SerializeField]
+    private float heighWall;
+    [SerializeField]
     private GameObject mine;
     [SerializeField]
     private GameObject wallMine;
@@ -21,7 +23,6 @@ public class StackOrder : MonoBehaviour
     {
         orders = new List<OrderEnum>();
         movement = GameObject.FindObjectOfType<Movement>();
-        numberMine = 7;
     }
 
     public void SetOrders(List<OrderEnum> lista)
@@ -47,22 +48,26 @@ public class StackOrder : MonoBehaviour
         }
     }
 
-    public void CreateMine()
+    public void CreateMine(bool danger)
     {
-        mineParent = GameObject.Instantiate(wallMine, GameObject.Find("SpawnMine").transform.position, Quaternion.identity).transform;
-        foreach (OrderEnum o in secureOrders)
+        numberMine = 7;
+        mineParent = GameObject.Instantiate(wallMine, movement.transform.position + Vector3.up * heighWall, Quaternion.identity).transform;
+        if (danger)
         {
-            switch (o)
+            foreach (OrderEnum o in secureOrders)
             {
-                case OrderEnum.Left:
-                    numberMine--;
-                    break;
-                case OrderEnum.Right:
-                    numberMine++;
-                    break;
+                switch (o)
+                {
+                    case OrderEnum.Left:
+                        numberMine--;
+                        break;
+                    case OrderEnum.Right:
+                        numberMine++;
+                        break;
+                }
             }
+            mineParent.GetChild(numberMine).gameObject.SetActive(false);
         }
-        mineParent.GetChild(numberMine).gameObject.SetActive(false);
     }
 
     public List<OrderEnum> Play(float time)
@@ -74,15 +79,6 @@ public class StackOrder : MonoBehaviour
         return tmp;
     }
 
-    /*
-    public List<OrderEnum> Play()
-    {
-        StartCoroutine(MyCoroutine());
-        List<OrderEnum> tmp = new List<OrderEnum>(orders);
-        orders = new List<OrderEnum>();
-        return tmp;
-    }
-    */
 
     IEnumerator MyCoroutine(float duration)
     {
