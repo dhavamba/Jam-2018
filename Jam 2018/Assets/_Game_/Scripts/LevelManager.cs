@@ -192,9 +192,11 @@ public class LevelManager : MonoBehaviour
 
     public void GameOver()
     {
-
+        GameObject.Find("UI").transform.FindChild("GameOverPanel").gameObject.active = true;
+        if (GameObject.Find("Canvas"))
+        {
+            GameObject.Find("Canvas").gameObject.active = false;
+        }
     }
-
-
 
 }

@@ -369,7 +369,7 @@ MonoBehaviour:
   timeAnimationFull: 3
   numEventsPerLevel: 1
   lives: 1
-  reduceTime: 0.5
+  reduceTime: 0.6
 --- !u!114 &114782339667667988
 MonoBehaviour:
   m_ObjectHideFlags: 1
