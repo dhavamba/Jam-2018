@@ -34,9 +34,25 @@ public class StartOptions : MonoBehaviour {
 		playMusic = GetComponent<PlayMusic> ();
 	}
 
+    public void ReturnMenu()
+    {
+        GameObject.Destroy(GameObject.Find("GameManager"));
+        GameObject.Destroy(GameObject.Find("[DOTween]"));
+        SceneManager.LoadScene(0);
+        GameObject.Destroy(GameObject.Find("UI"));
+
+}
+
+    public void UpdateTutorial()
+    {
+        transform.FindChild("TutorialPanel").gameObject.active = false;
+        transform.FindChild("TutorialPanel2").gameObject.active = true;
+    }
+
 
 	public void StartButtonClicked()
 	{
+        transform.FindChild("TutorialPanel2").gameObject.SetActive(false);
 		//If changeMusicOnStart is true, fade out volume of music group of AudioMixer by calling FadeDown function of PlayMusic, using length of fadeColorAnimationClip as time. 
 		//To change fade time, change length of animation "FadeToColor"
 		if (changeMusicOnStart) 
