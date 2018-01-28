@@ -48,22 +48,28 @@ public class StackOrder : MonoBehaviour
         }
     }
 
-    public void CreateMine(bool danger)
+    public void CreateMine(int danger)
     {
+        //0 = normale
+        //1 = morte istantanea
+        //2 = davanti te
         numberMine = 7;
         mineParent = GameObject.Instantiate(wallMine, movement.transform.position + Vector3.up * heighWall, Quaternion.identity).transform;
-        if (danger)
+        if (danger != 1)
         {
-            foreach (OrderEnum o in secureOrders)
+            if (danger == 0)
             {
-                switch (o)
+                foreach (OrderEnum o in secureOrders)
                 {
-                    case OrderEnum.Left:
-                        numberMine--;
-                        break;
-                    case OrderEnum.Right:
-                        numberMine++;
-                        break;
+                    switch (o)
+                    {
+                        case OrderEnum.Left:
+                            numberMine--;
+                            break;
+                        case OrderEnum.Right:
+                            numberMine++;
+                            break;
+                    }
                 }
             }
             mineParent.GetChild(numberMine).gameObject.SetActive(false);
