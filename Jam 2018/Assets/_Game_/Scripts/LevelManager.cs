@@ -192,6 +192,7 @@ public class LevelManager : MonoBehaviour
 
     public void GameOver()
     {
+        GetComponent<AudioSource>().Play();
         GameObject.Find("UI").transform.FindChild("GameOverPanel").gameObject.active = true;
         if (GameObject.Find("Canvas"))
         {

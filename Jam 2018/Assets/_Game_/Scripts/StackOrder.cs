@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class StackOrder : MonoBehaviour
@@ -79,6 +80,12 @@ public class StackOrder : MonoBehaviour
     public List<OrderEnum> Play(float time)
     {
         float orderDuration = time / orders.Count;
+
+        if (Enumerable.SequenceEqual(orders.OrderBy(t => t), secureOrders.OrderBy(t => t)))
+        {
+            transform.FindChild("Win").GetComponent<AudioSource>().Play();
+        }
+
         StartCoroutine(MyCoroutine(orderDuration));
         List<OrderEnum> tmp = new List<OrderEnum>(orders);
         orders = new List<OrderEnum>();

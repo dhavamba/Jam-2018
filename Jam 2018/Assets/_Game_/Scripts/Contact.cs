@@ -9,6 +9,8 @@ public class Contact : MonoBehaviour
     {
         cool.GetComponent<Animator>().SetTrigger("destroy");
         GameObject.FindObjectOfType<LevelManager>().GameOver();
+
+        transform.FindChild("explosion").GetComponent<AudioSource>().Play();
     }
 
 }

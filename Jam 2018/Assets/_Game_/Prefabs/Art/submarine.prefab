@@ -43,6 +43,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1150843605476228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4966733039678976}
+  m_Layer: 0
+  m_Name: explosion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1243396938029766
 GameObject:
   m_ObjectHideFlags: 1
@@ -200,9 +215,10 @@ GameObject:
   - component: {fileID: 114362999429576134}
   - component: {fileID: 61627557835174664}
   - component: {fileID: 114895836778315390}
-  - component: {fileID: 50463183654035864}
   - component: {fileID: 114944304493216178}
   - component: {fileID: 82335100606594386}
+  - component: {fileID: 50165367830164604}
+  - component: {fileID: 114139736056231798}
   m_Layer: 0
   m_Name: submarine
   m_TagString: Untagged
@@ -272,6 +288,7 @@ Transform:
   - {fileID: 4286098271560328}
   - {fileID: 4056626603161974}
   - {fileID: 4638858660852832}
+  - {fileID: 4966733039678976}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -468,7 +485,20 @@ Transform:
   m_Father: {fileID: 4638858660852832}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50463183654035864
+--- !u!4 &4966733039678976
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1150843605476228}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 15.800645, y: -2.5676584, z: 1.5041023}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4003873512722760}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50165367830164604
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -593,6 +623,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114139736056231798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963890987747096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 040459182a852fa4d89a0bfa182c22c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114362999429576134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -706,7 +747,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 624618020
+  randomSeed: 171068834
   InitialModule:
     serializedVersion: 3
     enabled: 1
