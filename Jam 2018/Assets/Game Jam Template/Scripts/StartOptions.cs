@@ -37,7 +37,7 @@ public class StartOptions : MonoBehaviour {
     public void ReturnMenu()
     {
         GameObject.Destroy(GameObject.Find("GameManager"));
-        GameObject.Destroy(GameObject.Find("[DOTween]"));
+        //GameObject.Destroy(GameObject.Find("[DOTween]"));
         SceneManager.LoadScene(0);
         GameObject.Destroy(GameObject.Find("UI"));
 

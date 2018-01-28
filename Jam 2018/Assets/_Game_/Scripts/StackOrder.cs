@@ -85,7 +85,6 @@ public class StackOrder : MonoBehaviour
         {
             transform.FindChild("Win").GetComponent<AudioSource>().Play();
         }
-
         StartCoroutine(MyCoroutine(orderDuration));
         List<OrderEnum> tmp = new List<OrderEnum>(orders);
         orders = new List<OrderEnum>();

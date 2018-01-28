@@ -182,7 +182,8 @@ public class LevelManager : MonoBehaviour
     public void endEvent()
     {
         setMatch();
-        GameObject.FindObjectOfType<SignCreate>().Enable(false, 0);
+        if (GameObject.FindObjectOfType<SignCreate>() != null)
+            GameObject.FindObjectOfType<SignCreate>().Enable(false, 0);
         //Aggiorna il contatore di eventi
         contEvents++;
         //Verifica il passaggio di livello
@@ -217,7 +218,7 @@ public class LevelManager : MonoBehaviour
 
     public void GameOver()
     {
-        GameObject.Find("submarine").active = false;
+        GameObject.Find("submarine").GetComponent<SpriteRenderer>().enabled = false;
         Invoke("_GameOver", 1f);
     }
 
