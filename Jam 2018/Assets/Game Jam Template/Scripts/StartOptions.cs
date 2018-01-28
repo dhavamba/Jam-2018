@@ -41,7 +41,13 @@ public class StartOptions : MonoBehaviour {
         SceneManager.LoadScene(0);
         GameObject.Destroy(GameObject.Find("UI"));
 
-}
+    }
+
+    public void NewGame()
+    {
+        transform.FindChild("TutorialPanel").gameObject.active = true;
+        transform.FindChild("MenuPanel").gameObject.active = false;
+    }
 
     public void UpdateTutorial()
     {
