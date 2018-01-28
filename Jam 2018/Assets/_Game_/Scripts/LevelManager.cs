@@ -87,22 +87,42 @@ public class LevelManager : MonoBehaviour
     {
         int nCaptains = level;
         if (nCaptains > 4)
-        {
             nCaptains = 4;
-        }
+        if (level > 5)
+            level = 5;
         captainNumber = (int)((Random.value * nCaptains) + 1);
-        if (captainNumber == 2)
+        //TODO : RIMETTERE LA RIGA QUI SOPRA ALLA FINE
+        //captainNumber = 2;
+        if (captainNumber == 2 || captainNumber == 4)
         {
             
             timeEvent = timeEvent * reduceTime;
         }
-        
+        Debug.Log("NUMERO CAPITANO: "+captainNumber);
         sequenceCaptain = GetComponent<Capitano>().createSequence(level);
         GameObject.FindObjectOfType<Movement>().SetActivate(true);
-        List<OrderEnum> sequence3 = new List<OrderEnum>(sequenceCaptain);
         GameObject.FindObjectOfType<SignCreate>().Add(sequenceCaptain);
         GameObject.FindObjectOfType<Bar>().SetTime(timeEvent);
-        GameObject.FindObjectOfType<StackOrder>().SetOrders(sequenceCaptain);
+
+        List<OrderEnum> sequenceTmp = new List<OrderEnum>(sequenceCaptain);
+        switch (captainNumber)
+        {
+            case 3:
+                for (int i=0; i<sequenceTmp.Count; i++)
+                {
+                    if (OrderEnum.Left == 0)
+                        sequenceTmp[i] = OrderEnum.Right;
+                    else
+                        sequenceTmp[i] = OrderEnum.Left;
+                }
+                break;
+            case 4:
+
+            default:
+                //GameObject.FindObjectOfType<StackOrder>().SetOrders(sequenceTmp);
+                break;
+        }
+        GameObject.FindObjectOfType<StackOrder>().SetOrders(sequenceTmp);
 
         captainSetted = true;
     }
@@ -110,7 +130,6 @@ public class LevelManager : MonoBehaviour
     public void setMatch()
     {
         sequencePlayer = GameObject.FindObjectOfType<StackOrder>().Play(timeAnimation);
-        //Debug.Log("SEQUENCE_PLAYER:" + sequencePlayer[0]);
         correct = true;
         Debug.Log("lunghezza player: " + sequencePlayer.Count);
         if (sequencePlayer.Count == sequenceCaptain.Count)
@@ -159,11 +178,16 @@ public class LevelManager : MonoBehaviour
         captainSetted = false;
         match = false;
         finalizeEvent = false;
-        if (captainNumber == 2)
+        if (captainNumber == 2 || captainNumber == 4)
         {
             timeEvent = timeEvent / reduceTime;
         }
-        GameObject.FindObjectOfType<StackOrder>().CreateMine(correct);
+        int tmp = 1;
+        if (correct)
+            tmp = 0;
+        if (correct && (captainNumber == 4))
+            tmp = 2;
+        GameObject.FindObjectOfType<StackOrder>().CreateMine(tmp);
         timerStart = Time.time;
     }
 
