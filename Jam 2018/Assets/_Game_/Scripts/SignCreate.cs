@@ -8,6 +8,8 @@ public class SignCreate : MonoBehaviour
     public Sprite right;
     public Sprite left;
 
+    public Sprite[] pictures;
+
     public void Add(List<OrderEnum> orders)
     {
         int i = 0;
@@ -31,6 +33,7 @@ public class SignCreate : MonoBehaviour
     public void Enable(bool t)
     {
         GetComponent<Image>().enabled = t;
+        GetComponent<Image>().sprite = pictures[0]; //ci pensi tu!!?!!?
     }
 
     public void DisableSign()

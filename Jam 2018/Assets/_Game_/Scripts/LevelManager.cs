@@ -25,7 +25,6 @@ public class LevelManager : MonoBehaviour
     private List<OrderEnum> sequenceCaptain;
     List<OrderEnum> sequencePlayer;
     private bool finalizeEvent;
-    private bool correct;
     //public float timeAnimation; //il tempo di durata dell'animazione
 
     void Start()
@@ -41,7 +40,6 @@ public class LevelManager : MonoBehaviour
         sequencePlayer = new List<OrderEnum>();
         eventMoment = true;
         finalizeEvent = false;
-        correct = true;
     }
 
     void Update()
@@ -165,7 +163,7 @@ public class LevelManager : MonoBehaviour
         {
             timeEvent = timeEvent / reduceTime;
         }
-        GameObject.FindObjectOfType<StackOrder>().CreateMine();
+        GameObject.FindObjectOfType<StackOrder>().CreateMine(correct);
         timerStart = Time.time;
     }
 

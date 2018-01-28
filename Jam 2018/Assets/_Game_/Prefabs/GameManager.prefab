@@ -350,6 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01fbf7a9969f234c830667f8b0f276d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heighWall: 8
   mine: {fileID: 1773319966893158, guid: 5550e8cf24382394bb42731b8d723bd9, type: 2}
   wallMine: {fileID: 1045030236961000, guid: 06cafd2f1c454824e865d826693b040c, type: 2}
 --- !u!114 &114635851743043060
