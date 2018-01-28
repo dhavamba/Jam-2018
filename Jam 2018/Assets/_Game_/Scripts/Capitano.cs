@@ -36,7 +36,7 @@ public class Capitano : MonoBehaviour
         for (int i=0; i<size; i++)
         {
             num = (int)(Random.value * 2);
-            Debug.Log("FRECCIA: "+ num);
+            //Debug.Log("FRECCIA: "+ num);
             if (num==0)
             {
                 sequence.Add(OrderEnum.Left);
