@@ -364,7 +364,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeEvent: 5
-  timeAnimation: 3
+  timeAnimation: 1
+  timeAnimationFull: 3
   numEventsPerLevel: 1
   lives: 3
   reduceTime: 0.75

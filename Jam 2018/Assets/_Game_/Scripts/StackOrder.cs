@@ -14,12 +14,22 @@ public class StackOrder : MonoBehaviour
 
     private Transform mineParent;
     private int numberOrder;
+    private int numberMine;
+    private List<OrderEnum> secureOrders;
 
     private void Awake()
     {
         orders = new List<OrderEnum>();
         movement = GameObject.FindObjectOfType<Movement>();
+        numberMine = 7;
     }
+
+    public void SetOrders(List<OrderEnum> lista)
+    {
+        secureOrders = lista;
+    }
+
+
 
     public List<OrderEnum> GetOrders()
     {
@@ -30,19 +40,17 @@ public class StackOrder : MonoBehaviour
     {
         orders.AddRange(order);
         numberOrder++;
-        if (numberOrder > GameObject.FindObjectOfType<LevelManager>().getLevel())
+        if (numberOrder >= GameObject.FindObjectOfType<LevelManager>().getLevel())
         {
             GameObject.FindObjectOfType<Movement>().SetActivate(false);
-            CreateMine();
             numberOrder = 0;
         }
     }
 
-    private void CreateMine()
+    public void CreateMine()
     {
-        mineParent = GameObject.Instantiate(wallMine, movement.transform.GetChild(0).position, Quaternion.identity, movement.transform.GetChild(0)).transform;
-        int numberMine = 7;
-        foreach (OrderEnum o in orders)
+        mineParent = GameObject.Instantiate(wallMine, GameObject.Find("SpawnMine").transform.position, Quaternion.identity).transform;
+        foreach (OrderEnum o in secureOrders)
         {
             switch (o)
             {
@@ -57,6 +65,16 @@ public class StackOrder : MonoBehaviour
         mineParent.GetChild(numberMine).gameObject.SetActive(false);
     }
 
+    public List<OrderEnum> Play(float time)
+    {
+        float orderDuration = time / orders.Count;
+        StartCoroutine(MyCoroutine(orderDuration));
+        List<OrderEnum> tmp = new List<OrderEnum>(orders);
+        orders = new List<OrderEnum>();
+        return tmp;
+    }
+
+    /*
     public List<OrderEnum> Play()
     {
         StartCoroutine(MyCoroutine());
@@ -64,8 +82,9 @@ public class StackOrder : MonoBehaviour
         orders = new List<OrderEnum>();
         return tmp;
     }
+    */
 
-    IEnumerator MyCoroutine()
+    IEnumerator MyCoroutine(float duration)
     {
         foreach (OrderEnum order in orders)
         {
@@ -73,37 +92,20 @@ public class StackOrder : MonoBehaviour
             switch (order)
             {
                 case OrderEnum.Left:
-                    movement.Left();
+                    movement.Left(duration);
                     break;
                 case OrderEnum.Right:
-                    movement.Right();
+                    movement.Right(duration);
                     break;
             }
-            yield return new WaitForSeconds(movement.duration);
+            yield return new WaitForSeconds(duration);
         }
     }
 
 
 
 
-    public List<OrderEnum> Play(float time)
-    {
-        float orderDuration = time / orders.Count;
 
-        foreach (OrderEnum order in orders)
-        {
-            switch (order)
-            {
-                case OrderEnum.Left:
-                    movement.Left(orderDuration);
-                    break;
-                case OrderEnum.Right:
-                    movement.Right(orderDuration);
-                    break;
-            }
-        }
-        List<OrderEnum> tmp = new List<OrderEnum>(orders);
-        orders = new List<OrderEnum>();
-        return tmp;
-    }
+
+    
 }

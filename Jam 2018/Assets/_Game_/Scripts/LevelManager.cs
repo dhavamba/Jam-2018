@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     public float timeEvent; //il tempo di durata di un evento
     public float timeAnimation; //il tempo di durata dell'animazione
+    public float timeAnimationFull; //compreso anche gli ostacoli che scendono
     public int numEventsPerLevel; //numero di eventi per livello
     public int lives;
     public float reduceTime;
@@ -69,7 +70,7 @@ public class LevelManager : MonoBehaviour
         }
 
         //Inizio animazione
-        if (Time.time <= timerStart + timeAnimation && animationMoment)
+        if (Time.time <= timerStart + timeAnimationFull && animationMoment)
         {
             
         }
@@ -102,6 +103,7 @@ public class LevelManager : MonoBehaviour
         Debug.Log(timeEvent);
         GameObject.FindObjectOfType<SignCreate>().Add(sequenceCaptain);
         GameObject.FindObjectOfType<Bar>().SetTime(timeEvent);
+        GameObject.FindObjectOfType<StackOrder>().SetOrders(sequenceCaptain);
 
         // TODO : INVIARE SCRITTA
 
@@ -110,13 +112,12 @@ public class LevelManager : MonoBehaviour
 
     public void setMatch()
     {
-        sequencePlayer = GameObject.FindObjectOfType<StackOrder>().Play();
+        sequencePlayer = GameObject.FindObjectOfType<StackOrder>().Play(timeAnimation);
         //Debug.Log("SEQUENCE_PLAYER:" + sequencePlayer[0]);
         bool correct = true;
         Debug.Log("lunghezza player: " + sequencePlayer.Count);
         if (sequencePlayer.Count == sequenceCaptain.Count)
         {
-            
             for (int i = 0; i < sequenceCaptain.Count; i++)
             {
                 
@@ -168,7 +169,7 @@ public class LevelManager : MonoBehaviour
         {
             timeEvent = timeEvent / reduceTime;
         }
-
+        GameObject.FindObjectOfType<StackOrder>().CreateMine();
         timerStart = Time.time;
     }
 
