@@ -196,6 +196,10 @@ public class LevelManager : MonoBehaviour
         return level;
     }
 
+    public void GameOver()
+    {
+
+    }
 
 
 
