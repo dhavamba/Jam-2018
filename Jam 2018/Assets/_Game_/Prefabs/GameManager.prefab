@@ -367,7 +367,7 @@ MonoBehaviour:
   timeAnimation: 1
   timeAnimationFull: 3
   numEventsPerLevel: 1
-  lives: 3
+  lives: 1
   reduceTime: 0.75
 --- !u!114 &114782339667667988
 MonoBehaviour:
